@@ -1,0 +1,59 @@
+/* components/MobileLayout.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.inner-container {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* 제목과 이모티콘을 양쪽 끝으로 배치 */
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.header > a {
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.userIcon {
+    font-size: 1.5rem;
+}
+
+.main {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
