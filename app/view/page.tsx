@@ -1,12 +1,17 @@
-import React from "react";
-import MobileLayout from "../global/MobileLayout";
+"use client";
 
-const View: React.FC = () => {
-    return (
-        <MobileLayout>
-            <h2>View Page</h2>
-        </MobileLayout>
-    );
+import React, { ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
+import GNB from "@/app/global/GNB";
+import Exam from "@/app/exam/exam"
+
+
+
+const page:React.FC = () =>{
+
+  return(
+      <Exam/>
+  )
+
 };
-
-export default View;
+export default page

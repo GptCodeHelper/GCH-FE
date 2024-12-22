@@ -1,0 +1,27 @@
+/*GNB.module*/
+.main{
+ width: 100%;
+ border: 1px solid black;
+ display: flex;
+}
+.title{
+
+}
+.back{
+
+}
+.icon{
+
+}
+.title{
+
+}
+.rightsec{
+  float:right;
+}
+.name{
+
+}
+.setting{
+
+}
