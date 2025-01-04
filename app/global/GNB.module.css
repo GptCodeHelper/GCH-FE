@@ -1,4 +1,7 @@
 /*GNB.module*/
+@body{
+  margin: 0;
+}
 .main{
  width: 100%;
  border: 1px solid black;
