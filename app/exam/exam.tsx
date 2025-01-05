@@ -1,5 +1,6 @@
 import React, { MouseEvent, useState, useEffect } from "react";
 import styles from "./exam.Layout.module.css";
+import CodeMirror from '@uiw/react-codemirror';
 
 const View: React.FC = () => {
   const [isResizing, setIsResizing] = useState(false);
@@ -37,7 +38,13 @@ const View: React.FC = () => {
       setWidth(newWidth);
     }
   };
- 
+
+  const [value, setValue] = React.useState("console.log('hello world!');");
+  const onChange = React.useCallback((val: React.SetStateAction<string>, viewUpdate: any) => {
+    console.log('val:', val);
+    setValue(val);
+  }, []);
+  
   useEffect(() => {
     if (isResizing) {
       document.addEventListener('mousemove', handleMouseMove);
@@ -95,7 +102,7 @@ const View: React.FC = () => {
           {/*Input bax*/}
           <div className={styles.inputBox}>
             <form>
-              <input placeholder="문제 입력 form" />
+            <CodeMirror value={value} height="200px" /*extensions={[javascript({ jsx: true })]}*/ onChange={onChange} />;
             </form>
           </div>
           {/*Terminer*/}

@@ -1,5 +1,5 @@
 export declare namespace ICommonConfig {
-    export type Mode = 'local' | 'dev' | 'prod';
+    export type Mode = 'local' | 'dev' | 'stg' | 'prd';
 
     export interface Params {
         baseUrl: string;
