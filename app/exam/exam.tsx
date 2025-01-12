@@ -1,13 +1,17 @@
 import React, { MouseEvent, useState, useEffect } from "react";
 import styles from "./exam.Layout.module.css";
 import CodeMirror from '@uiw/react-codemirror';
+import { basicSetup } from '@codemirror/basic-setup';
+import { javascript } from '@codemirror/lang-javascript';
+import { oneDark } from '@codemirror/theme-one-dark';
+
 
 const View: React.FC = () => {
   const [isResizing, setIsResizing] = useState(false);
   const [initialX, setInitialX] = useState(0);
   const [initialY, setInitialy] = useState(0);
   const [width, setWidth] = useState(1300);
-
+  const [code, setCode] = useState('');
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return; // 우클릭 움직임 방지
@@ -39,24 +43,18 @@ const View: React.FC = () => {
     }
   };
 
-  const [value, setValue] = React.useState("console.log('hello world!');");
-  const onChange = React.useCallback((val: React.SetStateAction<string>, viewUpdate: any) => {
-    console.log('val:', val);
-    setValue(val);
-  }, []);
-  
   useEffect(() => {
     if (isResizing) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
     } else {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isResizing]);
 
@@ -93,28 +91,37 @@ const View: React.FC = () => {
           style={{ width: `${width}px` }}
         >
           <div className={styles.questBox}>
-          문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 문제가 나옵니다 
             {/* Content */}
           </div>
         </div>
         {/* Answer&Terminer Input Box */}
         <div className={styles.answerBox}>
-          {/*Input bax*/}
+          {/* Input box */}
           <div className={styles.inputBox}>
-            <form>
-            <CodeMirror value={value} height="200px" /*extensions={[javascript({ jsx: true })]}*/ onChange={onChange} />;
-            </form>
-          </div>
-          {/*Terminer*/}
-            <div className={styles.terminerBox}>
-              <div className={styles.terminerSize}
-              onMouseDown={handleResize}>=</div>
-                <div className={styles.terminerLender}>
-                  터미널 렌더링
-                </div>
-            </div>
-          <div>
+          <div className={styles.editor_container}>
 
+          <CodeMirror
+            value={code}
+            options={{
+              mode: javascript,
+              theme: oneDark,
+              lineNumbers: true, // 라인 번호 표시
+              tabSize: 2, // 탭 크기
+              indentUnit: 2, // 들여쓰기 크기
+            }}
+            onChange={(editor, data, value) => {
+              setCode(value);
+            }}
+            />
+            </div>
+
+          </div>
+          {/* Terminer */}
+          <div className={styles.terminerBox}>
+            <div className={styles.terminerSize} onMouseDown={handleResize}>
+              =
+            </div>
+            <div className={styles.terminerLender}>터미널 렌더링</div>
           </div>
         </div>
       </div>

@@ -76,6 +76,13 @@
 }
 
 /* 오른쪽 답안 및 터미널 영역 */
+
+.editor_container {
+  height: 55vh;
+  overflow-y: auto;  /* 내용이 넘칠 경우 스크롤이 생기도록 설정 */
+}
+
+
 .answerBox {
   display: flex;
   flex-direction: column;
@@ -87,16 +94,11 @@
   padding: 1rem;
   background-color: #F9FAFB;
   border-bottom: 2px solid #E5E7EB;
+  max-height:65%;
   height:65%;
+
 }
 
-.inputBox input {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #CBD5E1;
-  border-radius: 6px;
-  font-size: 14px;
-}
 
 /* 터미널 */
 .terminerBox {
