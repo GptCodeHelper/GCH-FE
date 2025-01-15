@@ -109,7 +109,7 @@ const View: React.FC = () => {
               tabSize: 2, // 탭 크기
               indentUnit: 2, // 들여쓰기 크기
             }}
-            onChange={(editor, data, value) => {
+            onChange={(value: string) => {
               setCode(value);
             }}
             />
