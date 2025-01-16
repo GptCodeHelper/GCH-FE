@@ -1,5 +1,5 @@
 /* 공통 스타일 */
-.body {
+.body{
   font-family: "Inter", "Roboto", sans-serif;
   background-color: #F9FAFB;
   color: #111827;
@@ -94,6 +94,7 @@
 .mainContent {
   display: flex;
   flex: 1;
+  overflow-y: auto;
 }
 
 /* 왼쪽 문제 영역 */
@@ -103,6 +104,7 @@
   min-width: 430px;
   max-width: 1200px;
   cursor: col-resize;
+  height: auto;
 }
 
 .questBox {
@@ -111,8 +113,18 @@
   overflow-y: auto;
   background-color: #E0E7FF;
   border-radius: 12px;
-  max-height:100%;
+  max-height:90%;
 }
+.explain{
+border-bottom: solid 1px;
+height:15px;
+}
+.inout{
+  border-bottom: solid 1px;
+  height:15px;
+  margin-bottom: 15px;
+}
+
 
 /* 오른쪽 답안 및 터미널 영역 */
 .answerBox {

@@ -1,6 +1,5 @@
 import React, { MouseEvent, useState, useEffect } from "react";
 import styles from "./exam.Layout.module.css";
-import '../global/GNB'
 
 const View: React.FC = () => {
   const [isResizing, setIsResizing] = useState(false);
@@ -55,6 +54,7 @@ const View: React.FC = () => {
   }, [isResizing]);
 
   return (
+    <body className={styles.body}>
       <div className={styles.examMain}>
         {/* Secondary Navigation Bar */}
         <div className={styles.secnb}>
@@ -66,8 +66,6 @@ const View: React.FC = () => {
             <div>
               {/*모달창*/}
               <button id="Tcmodal">테스크 케이스 추가</button>
-
-
               <select className={styles.rightchildren}>
                 <option value="sublime">Sublime</option>
                 <option value="vim">Vim</option>
@@ -90,7 +88,30 @@ const View: React.FC = () => {
             style={{ width: `${width}px` }}
           >
             <div className={styles.questBox}>
-            code mirror 사용 예정
+              <h6 className={styles.explain}>문제 설명
+                <div>자세한 내용</div>
+              </h6>  
+              <h6 className={styles.explain}>제한사항
+                <div>자세한 내용용</div>
+              </h6>  
+              <h6 className={styles.inout}>입출력 예
+                <table>
+                  <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                  </tr>
+                  <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                  </tr>
+                </table>
+              </h6>  
+              <h6 className={styles.explain}>입출력 예 설명
+                <div>자세한 내용</div>
+              </h6>
+                
               {/* Content */}
             </div>
           </div>
@@ -124,6 +145,7 @@ const View: React.FC = () => {
           </div>
         </div>
       </div>
+      </body>
   );
 };
 
