@@ -1,5 +1,5 @@
 import React from "react"
-import MobileLayout from "../global/MobileLayout";
+import MobileLayout from "../../global/MobileLayout";
 
 export default function Home() {
   return (

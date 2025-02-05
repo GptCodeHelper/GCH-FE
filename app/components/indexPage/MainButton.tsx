@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from 'next/navigation';
-import styles from "./MainButton.module.css";
+import styles from "@/app/styes/indexPage/MainButton.module.css";
 
 export default function Mainbutton() {
     const route = useRouter();
