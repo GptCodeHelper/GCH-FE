@@ -68,12 +68,11 @@
 /* 오른쪽 답안 및 터미널 영역 */
 
 .editor_container {
-  height: 55vh;
+  height: 50vh;
   overflow-y: auto;  /* 내용이 넘칠 경우 스크롤이 생기도록 설정 */
-  max-width: 100%;
+  max-width: 790px;
   
 }
-
 
 .answerBox {
   display: flex;
