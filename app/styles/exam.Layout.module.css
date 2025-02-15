@@ -71,8 +71,6 @@
 .questLimit {
   background-color: white;
   border-right: 2px solid #e5e7eb;
-  min-width: 430px;
-  max-width: 1200px;
   cursor: col-resize;
 }
 
@@ -83,7 +81,6 @@
 }
 
 .questContent {
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -150,37 +147,50 @@
 .answerBox {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  background-color: white;
+  flex-grow: 1;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  height: 100%;  /* 부모 컨테이너의 전체 높이 사용 */
 }
 
 .inputBox {
-  flex: 1;
   padding: 1rem;
-  background-color: white;
-  border-bottom: 2px solid #e5e7eb;
+  background-color: #F9FAFB;
+  border-bottom: 2px solid #E5E7EB;
+  flex: 1;  /* 남은 공간 모두 사용 */
+  display: flex;
+  flex-direction: column;
 }
 
 .editor_container {
+  flex: 1;  /* 남은 공간 모두 사용 */
+  overflow: auto;  /* 내용이 넘칠 경우 스크롤 표시 */
+}
+
+/* CodeMirror 관련 스타일 오버라이드 */
+.editor_container :global(.cm-editor) {
   height: 100%;
-  overflow: hidden;
+  max-height: 100%;
+}
+
+.editor_container :global(.cm-scroller) {
+  overflow: auto;
 }
 
 .terminerBox {
-  min-height: 50px;
-  max-height: 400px;
   background-color: white;
   border-top: 2px solid #e5e7eb;
 }
 
 .terminerSize {
   height: 100%;
-  display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0 1rem;
   cursor: ns-resize;
   user-select: none;
+  text-align: center;
+  ;
 }
 
 .terminerLender {
