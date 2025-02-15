@@ -31,19 +31,54 @@ const SecondaryNavBar: React.FC = () => (
 
 //문제 컴포넌트
 const QuestionBox: React.FC<{ 
-  width: number; // 문제 영역의 너비 (px 단위)
-  handleMouseDown: (e: React.MouseEvent) => void; // 마우스 클릭(드래그 시작) 이벤트 핸들러
-}> = ({ width, handleMouseDown }) => (
-
-  // 문제 영역을 감싸는 컨테이너 (리사이징 가능)
+  width: number;
+  handleXMouseDown: (e: React.MouseEvent) => void;
+}> = ({ width, handleXMouseDown }) => (
   <div
-    className={styles.questLimit} // CSS 스타일 적용 (최대 크기 제한)
-    onMouseDown={handleMouseDown} // 마우스 클릭 시 크기 조절 기능 활성화
-    style={{ width: `${width}px` }} // 동적으로 너비 설정
+    className={styles.questLimit}
+    onMouseDown={handleXMouseDown}
+    style={{ width: `${width}px` }}
   >
-    {/* 📦 문제 내용을 포함하는 박스 */}
     <div className={styles.questBox}>
-      {/* 문제 내용이 들어갈 부분 */}
+      <div className={styles.questContent}>
+        <h2>문제 설명</h2>
+        <p>문자열 s를 숫자로 변환한 결과를 반환하는 함수, solution을 완성하세요.</p>
+        
+        <h2>제한 조건</h2>
+        <ul>
+          <li>s의 길이는 1 이상 5이하입니다.</li>
+          <li>s의 맨앞에는 부호(+, -)가 올 수 있습니다.</li>
+          <li>s는 부호와 숫자로만 이루어져있습니다.</li>
+          <li>s는 "0"으로 시작하지 않습니다.</li>
+        </ul>
+
+        <h2>입출력 예</h2>
+        <table className={styles.exampleTable}>
+          <thead>
+            <tr>
+              <th>예제</th>
+              <th>결과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"1234"</td>
+              <td>1234</td>
+            </tr>
+            <tr>
+              <td>"-1234"</td>
+              <td>-1234</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className={styles.noticeBox}>
+          <h3>참고 사항</h3>
+          <ul>
+            <li>문자열 s는 "1234"이면 1234를 반환하고, "-1234"이면 -1234를 반환하면 됩니다.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 );
