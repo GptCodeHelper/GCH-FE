@@ -1,7 +1,9 @@
 import React, { MouseEvent, useState, useEffect } from "react";
 import styles from "./exam.Layout.module.css";
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
 const View: React.FC = () => {
+  const [isBookmarked, setIsBookmarked] = useState(false); // 북마크 상태 관리[
   const [isResizing, setIsResizing] = useState(false);
   const [initialX, setInitialX] = useState(0);
   const [initialY, setInitialy] = useState(0);
@@ -57,8 +59,17 @@ const View: React.FC = () => {
     <div className={styles.examMain}>
       {/* Secondary Navigation Bar */}
       <div className={styles.secnb}>
-        <div className={styles.pageLeft}>
-          <button>북마크</button>
+        <div className={styles.pageLeft} style={{display:`flex`}}>
+        <button 
+      onClick={() => setIsBookmarked(!isBookmarked)}
+      className={styles.bookmarkButton}
+    >
+      {isBookmarked ? (
+        <BsBookmarkFill className={styles.bookmarkIcon} />
+      ) : (
+        <BsBookmark className={styles.bookmarkIcon} />
+      )}
+    </button>
           <a href="#">제목</a>
         </div>
         <div className={styles.pageRight}>

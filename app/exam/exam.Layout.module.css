@@ -14,7 +14,30 @@
   flex-direction: column;
   height: 100vh;
 }
+/*북마크*/
+.bookmarkButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.bookmarkIcon {
+  font-size: 20px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.bookmarkButton:hover .bookmarkIcon {
+  color: #FFD700;
+}
+
+.bookmarkButton .bookmarkIcon[fill] {
+  color: #FFD700;
+}
 /* 상단 네비게이션 바 */
 .secnb {
   display: flex;
@@ -27,7 +50,6 @@
 
 .pageLeft button,
 .pageRight button {
-  background-color: #F43F5E;
   color: white;
   border: none;
   border-radius: 8px;
@@ -37,10 +59,6 @@
   transition: background-color 0.3s ease;
 }
 
-.pageLeft button:hover,
-.pageRight button:hover {
-  background-color: #D81B60;
-}
 
 .pageRight select {
   background-color: #E0E7FF;
