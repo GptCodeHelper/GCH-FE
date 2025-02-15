@@ -1,5 +1,5 @@
 // pages/index.tsx
-import MobileLayout from "@/app/global/MobileLayout";
+import MobileLayout from "@/app/components/global/MobileLayout";
 import MainButton from "@/app/components/indexPage/MainButton";
 import MainImage from "@/app/components/indexPage/MainImage";
 
