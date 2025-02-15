@@ -3,6 +3,8 @@ import styles from "@/app/styles/exam.Layout.module.css";
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
+import { tags } from '@lezer/highlight';
+import { createTheme } from '@uiw/codemirror-themes';
 
 /**
  * 상단 네비게이션 바 컴포넌트
@@ -90,6 +92,28 @@ const TerminalBox: React.FC<{
  * - CodeMirror 에디터 통합
  * - 터미널 영역 포함
  */
+//커스텀 테마 설정
+const myTheme = createTheme({
+  theme: 'dark',
+  settings: {
+    background: '#292d3e',
+    foreground: '#d0d0d0',
+    caret: '#c6c6c6',
+    selection: '#44475a',
+    selectionMatch: '#44475a',
+    lineHighlight: '#44475a',
+  },
+  styles: [
+    { tag: tags.keyword, color: '#c792ea' },           // import, const 등 키워드
+    { tag: tags.string, color: '#c3e88d' },           // 문자열
+    { tag: tags.comment, color: '#676e95' },          // 주석
+    { tag: tags.function(tags.variableName), color: '#82aaff' },  // 함수명
+    { tag: tags.definition(tags.variableName), color: '#ffcb6b' }, // 변수 정의
+    { tag: tags.number, color: '#f78c6c' },           // 숫자
+    { tag: tags.variableName, color: '#d0d0d0' },     // 변수명
+    { tag: tags.propertyName, color: '#c792ea' },     // 객체 속성
+  ],
+});
 const AnswerBox: React.FC<{ 
   code: string;
   setCode: React.Dispatch<React.SetStateAction<string>>;
@@ -100,18 +124,21 @@ const AnswerBox: React.FC<{
   <div className={styles.answerBox}>
     <div className={styles.inputBox}>
       <div className={styles.editor_container}>
-        <CodeMirror
+      <CodeMirror
           value={code}
+          extensions={[javascript({ jsx: true })]} // JSX 지원 추가
+          theme={myTheme}
           options={{
             mode: javascript,
-            theme: oneDark,
             lineNumbers: true,
             tabSize: 2,
-            lineWrapping: true,  // 줄 바꿈 활성화
-            viewportMargin: Infinity,  // 무한 스크롤 활성화
+            lineWrapping: true,
+            scrollbarStyle: 'native',
+            viewportMargin: Infinity,
           }}
           onChange={(value: string) => setCode(value)}
           style={{ height: '100%' }} // 에디터 높이를 컨테이너에 맞춤
+          className={styles.codeMirror}  // 커스텀 클래스 추가
         />
       </div>
     </div>
