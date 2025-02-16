@@ -4,7 +4,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { tags } from '@lezer/highlight';
-import { createTheme } from '@uiw/codemirror-themes';
+import { EditorView } from '@codemirror/view';
 
 /**
  * 상단 네비게이션 바 컴포넌트
@@ -93,27 +93,43 @@ const TerminalBox: React.FC<{
  * - 터미널 영역 포함
  */
 //커스텀 테마 설정
-const myTheme = createTheme({
-  theme: 'dark',
-  settings: {
-    background: '#292d3e',
-    foreground: '#d0d0d0',
-    caret: '#c6c6c6',
-    selection: '#44475a',
-    selectionMatch: '#44475a',
-    lineHighlight: '#44475a',
+const myTheme = EditorView.theme({
+  '&': {
+    backgroundColor: '#292d3e',
+    color: '#d0d0d0'
   },
-  styles: [
-    { tag: tags.keyword, color: '#c792ea' },           // import, const 등 키워드
-    { tag: tags.string, color: '#c3e88d' },           // 문자열
-    { tag: tags.comment, color: '#676e95' },          // 주석
-    { tag: tags.function(tags.variableName), color: '#82aaff' },  // 함수명
-    { tag: tags.definition(tags.variableName), color: '#ffcb6b' }, // 변수 정의
-    { tag: tags.number, color: '#f78c6c' },           // 숫자
-    { tag: tags.variableName, color: '#d0d0d0' },     // 변수명
-    { tag: tags.propertyName, color: '#c792ea' },     // 객체 속성
-  ],
+  '.cm-content': {
+    caretColor: '#c6c6c6'
+  },
+  '.cm-cursor': {
+    borderLeftColor: '#c6c6c6'
+  },
+  '.cm-selectionBackground': {
+    backgroundColor: '#44475a !important'
+  },
+  '.cm-gutters': {
+    backgroundColor: '#292d3e',
+    color: '#676e95',
+    border: 'none'
+  },
+  '.cm-activeLineGutter': {
+    backgroundColor: '#44475a'
+  },
+  '.cm-line': {
+    '&.cm-activeLine': {
+      backgroundColor: '#44475a'
+    }
+  },
+  '.ͼb': { color: '#c792ea' },  // keywords
+  '.ͼc': { color: '#c3e88d' },  // strings
+  '.ͼd': { color: '#676e95' },  // comments
+  '.ͼe': { color: '#82aaff' },  // function names
+  '.ͼf': { color: '#ffcb6b' },  // definitions
+  '.ͼ7': { color: '#f78c6c' },  // numbers
+  '.ͼ8': { color: '#d0d0d0' },  // variables
+  '.ͼ9': { color: '#c792ea' }   // properties
 });
+
 const AnswerBox: React.FC<{ 
   code: string;
   setCode: React.Dispatch<React.SetStateAction<string>>;
@@ -127,14 +143,14 @@ const AnswerBox: React.FC<{
       <CodeMirror
           value={code}
           extensions={[javascript({ jsx: true })]} // JSX 지원 추가
-          theme={myTheme}
-          options={{
-            mode: javascript,
+          theme={oneDark}
+          basicSetup={{
             lineNumbers: true,
-            tabSize: 2,
-            lineWrapping: true,
-            scrollbarStyle: 'native',
-            viewportMargin: Infinity,
+            foldGutter: true,
+            dropCursor: true,
+            allowMultipleSelections: true,
+            indentOnInput: true,
+            tabSize: 2
           }}
           onChange={(value: string) => setCode(value)}
           style={{ height: '100%' }} // 에디터 높이를 컨테이너에 맞춤
@@ -225,11 +241,13 @@ const View: React.FC = () => {
     
     // Y축 리사이징 처리
     if (isYResizing) {
-      const newHeight = terminalHeight - (e.clientY - initialY);
+      const deltaY =  e.clientY - initialY
+      const newHeight = terminalHeight - deltaY;
       setInitialY(e.clientY);
-      if (newHeight >= 0 && newHeight <= 400) {
+      if (newHeight >= 0 && newHeight <= 900) {
         setTerminalHeight(newHeight);
       }
+      setInitialY(e.clientY)
     }
   };
 
