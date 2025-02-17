@@ -244,7 +244,7 @@ const View: React.FC = () => {
       const deltaY =  e.clientY - initialY
       const newHeight = terminalHeight - deltaY;
       setInitialY(e.clientY);
-      if (newHeight >= 0 && newHeight <= 900) {
+      if (newHeight >= 0 && newHeight <= 1400) {
         setTerminalHeight(newHeight);
       }
       setInitialY(e.clientY)
