@@ -2,6 +2,8 @@ import React, { MouseEvent, useState, useEffect } from "react";
 import styles from "./exam.Layout.module.css";
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
+
+
 const View: React.FC = () => {
   const [isBookmarked, setIsBookmarked] = useState(false); // 북마크 상태 관리[
   const [isResizing, setIsResizing] = useState(false);
@@ -70,17 +72,17 @@ const View: React.FC = () => {
         <BsBookmark className={styles.bookmarkIcon} />
       )}
     </button>
-          <a href="#">제목</a>
+          <a className={styles.title}href="#">제목</a>
         </div>
         <div className={styles.pageRight}>
           <div>
-            <button>테스크 케이스 추가</button>
+            <button className={styles.rightchildren}>테스크 케이스 추가</button>
             <select className={styles.rightchildren}>
               <option value="sublime">Sublime</option>
               <option value="vim">Vim</option>
               <option value="emacs">Emacs</option>
             </select>
-            <select>
+            <select className={styles.rightchildren}>
               <option value="java">Java</option>
               <option value="javascript">JavaScript</option>
               <option value="python">Python</option>

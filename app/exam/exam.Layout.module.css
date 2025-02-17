@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
+
 /* 공통 스타일 */
 .body {
   font-family: "Inter", "Roboto", sans-serif;
@@ -13,6 +16,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  
 }
 /*북마크*/
 .bookmarkButton {
@@ -23,6 +27,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.title{
+  color: white;
+  text-decoration: none;
+  font-family: "IBM Plex Sans KR", serif;
+  font-size:23px;
 }
 
 .bookmarkIcon {
@@ -43,14 +54,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   background-color: #4F46E5;
   color: white;
 }
 
 .pageLeft button,
 .pageRight button {
-  color: white;
   border: none;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -58,7 +68,10 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
+.rightchildren{
+  background-color: #E0E7FF;
+  color:#4F46E5;
+}
 
 .pageRight select {
   background-color: #E0E7FF;
