@@ -2,9 +2,8 @@
 
 import React, { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import GNB from "@/app/global/GNB";
-import Exam from "@/app/exam/exam"
-
+import GNB from "@/app/components/global/GNB";
+import Exam from "@/app/components/exam/exam"
 
 
 const page:React.FC = () =>{
