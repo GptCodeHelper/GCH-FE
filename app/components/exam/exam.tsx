@@ -18,14 +18,14 @@ const SecondaryNavBar: React.FC = () => (
       <a href="#">제목</a>
     </div>
     <div className={styles.pageRight}>
-      <div>
-        <button>테스트 케이스 추가</button>
+      <div className={styles.pageRightbtn}>
+        <button className={styles.rightchildren}>테스트 케이스 추가</button>
         <select className={styles.rightchildren}>
           <option value="sublime">Sublime</option>
           <option value="vim">Vim</option>
           <option value="emacs">Emacs</option>
         </select>
-        <select>
+        <select className={styles.rightchildren}>
           <option value="java">Java</option>
           <option value="javascript">JavaScript</option>
           <option value="python">Python</option>
@@ -234,7 +234,7 @@ const View: React.FC = () => {
     if (isXResizing) {
       const newWidth = width + e.clientX - initialX;
       setInitialX(e.clientX);
-      if (newWidth >= 0 && newWidth <= 1400) {
+      if (newWidth >= 0 && newWidth <= 9000) {
         setWidth(newWidth);
       }
     }
