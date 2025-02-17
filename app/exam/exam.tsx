@@ -127,9 +127,9 @@ const View: React.FC = () => {
       {/* Bottom Navigation Bar */}
       <div className={styles.bottomNav}>
         <div className={styles.bottomNavchildren}>
-          <button>저장</button>
-          <button>테스트</button>
-          <button>실행</button>
+          <button className={styles.botnabvbtn}>저장</button>
+          <button className={styles.botnabvbtn}>테스트</button>
+          <button className={styles.botnabvbtn}>실행</button>
         </div>
       </div>
     </div>
