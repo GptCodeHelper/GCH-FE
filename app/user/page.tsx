@@ -26,11 +26,35 @@ export default function User() {
   if (!userData) return <div>Loading...</div>;
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Home Page</h1>
-      <p>User ID: {userData.userId}</p>
-      <p>User Name: {userData.userNm}</p>
-      {/* 추가 사용자 정보 출력 */}
+    <div
+      style={{
+        background: "#f3e5f5",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        paddingTop: "50px",
+      }}
+    >
+      <div
+        style={{
+          background: "#fff",
+          padding: "40px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+          width: "400px",
+          textAlign: "center",
+        }}
+      >
+        <h1 style={{ marginBottom: "20px" }}>홈 페이지</h1>
+        <p style={{ fontSize: "18px", marginBottom: "10px" }}>
+          <strong>User ID:</strong> {userData.userId}
+        </p>
+        <p style={{ fontSize: "18px" }}>
+          <strong>User Name:</strong> {userData.userNm}
+        </p>
+        {/* 추가 사용자 정보 출력 */}
+      </div>
     </div>
   );
 }

@@ -10,13 +10,42 @@ export default function LoginPage() {
   };
 
   return (
-    <MobileLayout>
-      <div style={{ textAlign: "center", marginTop: "100px" }}>
-        <h1>Login Page</h1>
-        <button onClick={handleKakaoLogin} style={{ padding: "10px 20px", fontSize: "16px" }}>
-            Login with Kakao
-        </button>
+      <div
+        style={{
+          background: "#f5f5f5",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            background: "#fff",
+            padding: "40px",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+            textAlign: "center",
+            maxWidth: "320px",
+            width: "100%",
+          }}
+        >
+          <h1 style={{ marginBottom: "20px" }}>로그인</h1>
+          <button
+            onClick={handleKakaoLogin}
+            style={{
+              padding: "12px 24px",
+              fontSize: "16px",
+              borderRadius: "4px",
+              backgroundColor: "#FEE500",
+              border: "none",
+              cursor: "pointer",
+              fontWeight: "bold",
+            }}
+          >
+            Kakao로 로그인
+          </button>
+        </div>
       </div>
-    </MobileLayout>
   );
 }
