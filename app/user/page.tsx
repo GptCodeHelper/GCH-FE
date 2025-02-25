@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axiosInstance from "../../utils/axiosInstance";
+import LogoutButton from "../components/LogoutBtn";
 
 export default function User() {
   const router = useRouter();
   const [userData, setUserData] = useState();
-  
+
   useEffect(() => {
     // HTTP-only 쿠키에 JWT 토큰이 저장되어 있으므로,
     // 별도의 토큰 검증 없이 API 호출 시 쿠키가 자동으로 전송됩니다.
@@ -53,6 +54,7 @@ export default function User() {
         <p style={{ fontSize: "18px" }}>
           <strong>User Name:</strong> {userData.userNm}
         </p>
+        <LogoutButton />
         {/* 추가 사용자 정보 출력 */}
       </div>
     </div>
