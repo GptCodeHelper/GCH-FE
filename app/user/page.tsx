@@ -10,13 +10,11 @@ export default function User() {
   const [userData, setUserData] = useState();
 
   useEffect(() => {
-    // HTTP-only 쿠키에 JWT 토큰이 저장되어 있으므로,
-    // 별도의 토큰 검증 없이 API 호출 시 쿠키가 자동으로 전송됩니다.
+    // HTTP-only 쿠키에 JWT 토큰이 저장
+    // 별도의 토큰 검증 없이 API 호출 시 쿠키가 자동으로 전송
     axiosInstance.get("/v1/user/userinfo")
       .then((response) => {
-        console.log(response.data)
-        console.log("success login")
-        setUserData(response.data);
+        setUserData(response.data.data);
       })
       .catch((error) => {
          console.error("Error fetching user data:", error);

@@ -41,7 +41,7 @@ export default function SignupPage() {
       });
 
       // 응답에서 redirectUrl 읽기
-      const successYn = response.data.SuccessYn;
+      const successYn = response.data.successYn;
       if (successYn == "Y") {
         router.push("/");
       } else {
@@ -69,7 +69,7 @@ export default function SignupPage() {
           borderRadius: "8px",
           boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
           width: "420px",
-          boxSizing: "border-box", // padding을 포함하여 전체 너비가 320px이 됨
+          boxSizing: "border-box",
         }}
       >
         <h1 style={{ textAlign: "center", marginBottom: "20px" }}>회원가입</h1>
