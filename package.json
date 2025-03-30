@@ -25,5 +25,17 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "description": "* Local / Dev / Prod 실행 방법\r * local : localhost:3000\r * dev : localhost:4000\r * prd : localhost:5000",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GptCodeHelper/GCH-FE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GptCodeHelper/GCH-FE/issues"
+  },
+  "homepage": "https://github.com/GptCodeHelper/GCH-FE#readme"
 }
