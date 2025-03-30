@@ -5,7 +5,22 @@ import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { tags } from '@lezer/highlight';
 import { EditorView } from '@codemirror/view';
+import axios from 'axios';
 
+//axios 인스턴스 생성
+// axios.defaults.baseURL = 'https://api.example.com'; // 기본 URL 설정
+const apiClient = axios.create({
+  baseURL: 'https://localhost:7070', // 공백 제거
+  timeout: 5000,
+  headers: { 'Authorization': 'Bearer YOUR_TOKEN' }
+});
+apiClient.get('/data')
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 /**
  * 상단 네비게이션 바 컴포넌트
  * - 왼쪽: 북마크 버튼과 제목 표시
