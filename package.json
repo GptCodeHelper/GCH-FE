@@ -7,14 +7,20 @@
     "local": "env-cmd -f .env.local next dev -p 3000",
     "build:dev": "env-cmd -f .env.dev next build",
     "dev": "env-cmd -f .env.dev next start -p 4000",
-    "build:prod": "env-cmd -f .env.prod next build",
-    "prod": "env-cmd -f .env.prod next start -p 5000"
+    "build:stg": "env-cmd -f .env.prd next build",
+    "stg": "env-cmd -f .env.prd next start -p 5000",
+    "build:prd": "env-cmd -f .env.prd next build",
+    "prd": "env-cmd -f .env.prd next start -p 6000"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.3",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@uiw/react-codemirror": "^4.23.8",
+    "axios": "^1.8.4",
     "env-cmd": "^10.1.0",
     "next": "^14.2.15",
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -25,5 +31,17 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "description": "* Local / Dev / Prd 실행 방법\r * local : localhost:3000\r * dev : localhost:4000\r * stg : localhost:5000\r * prd : localhost:6000",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GptCodeHelper/GCH-FE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GptCodeHelper/GCH-FE/issues"
+  },
+  "homepage": "https://github.com/GptCodeHelper/GCH-FE#readme"
 }
