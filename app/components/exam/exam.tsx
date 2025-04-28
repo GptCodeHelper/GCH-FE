@@ -5,16 +5,12 @@ import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { tags } from '@lezer/highlight';
 import { EditorView } from '@codemirror/view';
-import axios from 'axios';
+import apiClient from "@/app/utils/apiClient" // API 클라이언트 임포트
 
-//axios 인스턴스 생성
-// axios.defaults.baseURL = 'https://api.example.com'; // 기본 URL 설정
-const apiClient = axios.create({
-  baseURL: 'https://localhost:7070', // 공백 제거
-  timeout: 5000,
-  headers: { 'Authorization': 'Bearer YOUR_TOKEN' }
-});
-apiClient.get('/data')
+
+
+
+apiClient.get('/problems/1?probConId=4')
   .then(response => {
     console.log(response.data);
   })
