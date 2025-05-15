@@ -5,9 +5,9 @@ import MainImage from "@/app/components/indexPage/MainImage";
 const Home: React.FC = () => {
     return (
         <MobileLayout>
-            <MainButton />
             <MainImage />
             <hr />
+            <MainButton />
         </MobileLayout>
     );
 };

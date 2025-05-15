@@ -10,20 +10,9 @@ export default function Mainbutton() {
     const view = () => {
         route.push("/view");
     }
-
-    const recommend = () => {
-        route.push("/recommend");
-    }
-
-    const community = () => {
-        route.push("/community");
-    }
-
     return <>
         <div className={styles.buttonDiv}>
-            <button className={styles.button} onClick={view}>등산로 보기</button>
-            <button className={styles.button} onClick={recommend}>등산로 추천</button>
-            <button className={styles.button} onClick={community}>커뮤니티</button>
+            <button className={styles.button} onClick={view}>코딩테스트 1번</button>
         </div>
         
     </>
