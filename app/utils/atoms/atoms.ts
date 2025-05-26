@@ -15,7 +15,7 @@ export const initialXState = atom<number>({
 // 문제 영역 너비
 export const widthState = atom<number>({
   key: "widthState",
-  default: 900,
+  default: 700,
 });
 
 // Y축 리사이징 활성화 상태
@@ -40,4 +40,10 @@ export const terminalHeightState = atom<number>({
 export const codeState = atom<string>({
   key: "codeState",
   default: "",
+});
+
+// codemirror 언어 설정
+export const languageState = atom<string>({
+  key: "languageState",
+  default: "javascript",
 });

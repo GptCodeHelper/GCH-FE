@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import styles from "@/app/styles/exam.Layout.module.css";
-
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-import { oneDark } from '@codemirror/theme-one-dark';
-import { tags } from '@lezer/highlight';
-import { EditorView } from '@codemirror/view';
+import React, { useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { languageState } from "@/app/utils/atoms/atoms";
+import CodeMirror from "@uiw/react-codemirror";
 import TerminalBox from "./TerminalBox";
-
+import { javascript } from "@codemirror/lang-javascript";
+import { python } from "@codemirror/lang-python";
+import { html } from "@codemirror/lang-html";
+import { java } from "@codemirror/lang-java";
+import { oneDark } from "@codemirror/theme-one-dark";
+import styles from "@/app/styles/exam.Layout.module.css";
 
 /**
  * 코드 에디터 영역 컴포넌트
@@ -22,14 +23,37 @@ import TerminalBox from "./TerminalBox";
 interface AnswerBoxProps {
   code: string;
   setCode: React.Dispatch<React.SetStateAction<string>>;
-  handleXResize: (e: React.MouseEvent<HTMLDivElement>) => void; // 수정된 타입
+  handleXResize: (e: React.MouseEvent<HTMLDivElement>) => void;
   terminalHeight: number;
   handleYMouseDown: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-
-
-
+// 코드미러 초기값
+const initialCodeValues: { [key: string]: string } = {
+  javascript: `// JavaScript 초기값
+function greet() {
+  console.log("Hello, World!");
+}`,
+  python: `# Python 초기값
+def greet():
+    print("Hello, World!")`,
+  html: `<!-- HTML 초기값 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>`,
+  java: `// Java 초기값
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}`,
+};
 
 const AnswerBox: React.FC<AnswerBoxProps> = ({
   code,
@@ -37,16 +61,36 @@ const AnswerBox: React.FC<AnswerBoxProps> = ({
   handleXResize,
   terminalHeight,
   handleYMouseDown,
-})  => (
-      
-    <div className={styles.answerBox}
-    onMouseDown={handleYMouseDown}
-      onMouseMove={handleXResize}>
+}) => {
+  const selectedLanguage = useRecoilValue(languageState);
+
+  useEffect(() => {
+    setCode(initialCodeValues[selectedLanguage] || "");
+    // eslint-disable-next-line
+  }, [selectedLanguage]);
+
+  return (
+    <div
+      className={styles.answerBox}
+      onMouseDown={handleYMouseDown}
+      onMouseMove={handleXResize}
+    >
+      {/* 코드 에디터 */}
       <div className={styles.inputBox}>
         <div className={styles.editor_container}>
-        <CodeMirror
+          <CodeMirror
             value={code}
-            extensions={[javascript({ jsx: true })]} // JSX 지원 추가
+            extensions={
+              selectedLanguage === "javascript"
+                ? [javascript({ jsx: true })]
+                : selectedLanguage === "python"
+                ? [python()]
+                : selectedLanguage === "html"
+                ? [html()]
+                : selectedLanguage === "java"
+                ? [java()]
+                : []
+            }
             theme={oneDark}
             basicSetup={{
               lineNumbers: true,
@@ -54,16 +98,17 @@ const AnswerBox: React.FC<AnswerBoxProps> = ({
               dropCursor: true,
               allowMultipleSelections: true,
               indentOnInput: true,
-              tabSize: 2
+              tabSize: 2,
             }}
             onChange={(value: string) => setCode(value)}
-            style={{ height: '100%' }} // 에디터 높이를 컨테이너에 맞춤
-            className={styles.codeMirror}  // 커스텀 클래스 추가
+            style={{ height: "100%" }} // 에디터 높이를 컨테이너에 맞춤
+            className={styles.codeMirror} // 커스텀 클래스 추가
           />
+          <TerminalBox height={terminalHeight} handleYMouseDown={handleYMouseDown} />
         </div>
       </div>
-      <TerminalBox height={terminalHeight} handleYMouseDown={handleYMouseDown} />
     </div>
   );
+};
 
-  export default AnswerBox;
+export default AnswerBox;

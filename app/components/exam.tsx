@@ -2,6 +2,14 @@ import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import styles from "@/app/styles/exam.Layout.module.css";
 
+
+
+// 컴포넌트 임포트
+import SecondaryNavBar from "./exam/SecondaryNavBar";
+import QuestionBox from "./exam/QuestionBox";
+import AnswerBox from "./exam/AnswerBox";
+import Submit from "./exam/Submit";
+
 // Recoil 상태 임포트
 import {
   isXResizingState,
@@ -13,11 +21,13 @@ import {
   codeState,
 } from "../utils/atoms/atoms";
 
-// 컴포넌트 임포트
-import SecondaryNavBar from "./exam/SecondaryNavBar";
-import QuestionBox from "./exam/QuestionBox";
-import AnswerBox from "./exam/AnswerBox";
-import Submit from "./exam/Submit";
+interface AnswerBoxProps {
+  code: string;
+  setCode: (value: string) => void;
+  handleXResize: (e: React.MouseEvent<HTMLDivElement>) => void;
+  terminalHeight: number;
+  handleYMouseDown: (e: React.MouseEvent<HTMLDivElement>) => void;
+}
 
 const View: React.FC = () => {
   // Recoil 상태 사용
@@ -31,6 +41,7 @@ const View: React.FC = () => {
 
   const [code, setCode] = useRecoilState(codeState);
 
+  // X축 리사이징 시작
   const handleXMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return;
     e.preventDefault();
@@ -38,6 +49,7 @@ const View: React.FC = () => {
     setInitialX(e.clientX);
   };
 
+  // Y축 리사이징 시작
   const handleYMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return;
     e.preventDefault();
@@ -45,11 +57,13 @@ const View: React.FC = () => {
     setInitialY(e.clientY);
   };
 
+  // 리사이징 종료
   const handleMouseUp = () => {
     setIsXResizing(false);
     setIsYResizing(false);
   };
 
+  // 리사이징 동작
   const handleMouseMove = (e: globalThis.MouseEvent) => {
     if (isXResizing) {
       const newWidth = width + e.clientX - initialX;
@@ -63,39 +77,52 @@ const View: React.FC = () => {
       const deltaY = e.clientY - initialY;
       const newHeight = terminalHeight - deltaY;
       setInitialY(e.clientY);
-      if (newHeight >= 0 && newHeight <= 1400) {
+      if (newHeight >= 0 && newHeight <= 100000) {
         setTerminalHeight(newHeight);
       }
     }
   };
-
   const handleXResize = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isXResizing) return; // 리사이징 상태가 아니면 실행하지 않음
     const newWidth = e.clientX - e.currentTarget.getBoundingClientRect().left;
     if (newWidth >= 430 && newWidth <= 1200) {
-      setWidth(newWidth);
+    setWidth(newWidth);
     }
-  };
+    };
 
+  // 이벤트 리스너 관리
   useEffect(() => {
-    if (isXResizing || isYResizing) {
+    const addListeners = () => {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
-    } else {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    }
+    };
 
-    return () => {
+    const removeListeners = () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isXResizing, isYResizing, width, terminalHeight]);
+
+    if (isXResizing || isYResizing) {
+      addListeners();
+    } else {
+      removeListeners();
+    }
+
+    return removeListeners;
+  }, [isXResizing, isYResizing, handleMouseMove, handleMouseUp]);
 
   return (
     <div className={styles.examMain}>
       <SecondaryNavBar />
       <div className={styles.mainContent}>
         <QuestionBox width={width} handleXMouseDown={handleXMouseDown} />
+        {/* 리사이징 버튼 */}
+        <div
+          className={styles.resizeButton}
+          onMouseDown={handleYMouseDown}
+        >
+          {/* 버튼 내용 */}
+        </div>
         <AnswerBox
           code={code}
           setCode={setCode}
