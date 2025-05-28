@@ -1,10 +1,11 @@
 import React from "react";
-import { useRecoilState } from "recoil";
-import { languageState } from "@/app/utils/atoms/atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { languageState, problemTitleState } from "@/app/utils/atoms/atoms";
 import styles from "@/app/styles/exam.Layout.module.css";
 
 const SecondaryNavBar: React.FC = () => {
   const [language, setLanguage] = useRecoilState(languageState);
+  const problemTitle = useRecoilValue(problemTitleState);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(e.target.value); // languageState 업데이트
@@ -14,7 +15,9 @@ const SecondaryNavBar: React.FC = () => {
     <div className={styles.secnb}>
       <div className={styles.pageLeft}>
         <button>북마크</button>
-        <a href="#">제목을 불러오는 중...</a>
+        <a className={styles.secnbtitle} href="#">
+          {problemTitle || "제목을 불러오는 중..."}
+        </a>
       </div>
       <div className={styles.pageRight}>
         <div className={styles.pageRightbtn}>

@@ -47,3 +47,9 @@ export const languageState = atom<string>({
   key: "languageState",
   default: "javascript",
 });
+
+// 문제 제목 전역 상태
+export const problemTitleState = atom<string>({
+  key: "problemTitleState",
+  default: "",
+});

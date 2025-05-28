@@ -268,3 +268,50 @@
   cursor: pointer;
   padding: 0 0.3rem;
 }
+.myContent {
+  margin: 16px 0;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #222;
+}
+.myContent h6.guide-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+  color: #222;
+}
+.myContent .markdown {
+  margin: 12px 0;
+}
+.myContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  background: #fff;
+  font-size: 0.98rem;
+  border: 2px solid #000 !important; /* 테이블 외곽선 검정색 */
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
+}
+.myContent th, .myContent td {
+  border: 1.5px solid #000 !important; /* 셀 구분선 검정색 */
+  padding: 10px 14px;
+  text-align: left;
+}
+.myContent th {
+  background: #f7f7f7;
+  font-weight: 600;
+  border-bottom: 2px solid #000 !important;
+}
+.myContent tr {
+  border-bottom: 1.5px solid #000 !important;
+}
+.myContent code {
+  background: #f3f3f3;
+  color: #c7254e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.97em;
+}
+.myContent p {
+  margin: 10px 0 10px 0;
+}
