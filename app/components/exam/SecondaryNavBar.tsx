@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { languageState, problemTitleState } from "@/app/utils/atoms/atoms";
-import styles from "@/app/styles/exam.Layout.module.css";
+import styles from "@/app/styles/exam/exam.SecondaryNavBar.module.css";
 
 const SecondaryNavBar: React.FC = () => {
   const [language, setLanguage] = useRecoilState(languageState);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { problemTitleState } from "@/app/utils/atoms/atoms";
-import styles from "@/app/styles/exam.Layout.module.css";
+import styles from "@/app/styles/exam/exam.QuestionBox.module.css"; // 스타일 경로 수정
 import apiClient from "@/app/utils/apiClient"; // API 클라이언트 임포트
 
 const QuestionBox: React.FC<{
@@ -67,7 +67,7 @@ const QuestionBox: React.FC<{
             <div key={item.probConId}>
               {/* 1, 2, 3 등 최상단 숫자(h1)는 렌더링하지 않음 */}
               {idx !== 0 && idx !== 1 && idx !== 2 && <h1>{item.probConSort}</h1>}
-              <div dangerouslySetInnerHTML={{ __html: item.probCont }} />
+              <div className={styles.myContent} dangerouslySetInnerHTML={{ __html: item.probCont }} />
             </div>
           ))}
         </div>

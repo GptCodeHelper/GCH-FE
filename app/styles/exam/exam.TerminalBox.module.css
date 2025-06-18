@@ -1,0 +1,20 @@
+.terminerBox {
+  background-color: white;
+  border-top: 2px solid #e5e7eb;
+}
+
+.terminerSize {
+  height: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  cursor: ns-resize;
+  user-select: none;
+  text-align: center;
+  ;
+}
+
+.terminerLender {
+  color: #4F46E5;
+  font-weight: 500;
+}

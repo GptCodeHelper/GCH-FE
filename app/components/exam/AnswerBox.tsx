@@ -8,7 +8,7 @@ import { python } from "@codemirror/lang-python";
 import { html } from "@codemirror/lang-html";
 import { java } from "@codemirror/lang-java";
 import { oneDark } from "@codemirror/theme-one-dark";
-import styles from "@/app/styles/exam.Layout.module.css";
+import styles from "@/app/styles/exam/exam.AnswerBox.module.css"; // 스타일 경로 수정
 
 /**
  * 코드 에디터 영역 컴포넌트

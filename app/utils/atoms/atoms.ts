@@ -33,7 +33,7 @@ export const initialYState = atom<number>({
 // 터미널 영역 높이
 export const terminalHeightState = atom<number>({
   key: "terminalHeightState",
-  default: 150,
+  default: 300,
 });
 
 // 에디터 코드 내용

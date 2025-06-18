@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/app/styles/exam.Layout.module.css";
+import styles from "@/app/styles/exam/exam.TerminalBox.module.css"; // 스타일 경로 수정
 
 /**
  * 터미널 컴포넌트

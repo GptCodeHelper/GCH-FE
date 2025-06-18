@@ -1,0 +1,54 @@
+.answerBox {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.inputBox {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  padding: 1rem;
+  background-color: #F9FAFB;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+.editor_container {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* CodeMirror 관련 스타일 */
+.codeMirror {
+  width: 100% !important;
+  flex: 1 1 0%;
+  min-height: 0;
+  height: auto;
+}
+
+/* CodeMirror 전역 스타일 오버라이드 */
+.editor_container :global(.cm-editor) {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.editor_container :global(.cm-scroller) {
+  overflow: auto !important;
+}
+
+.editor_container :global(.cm-content) {
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  max-width: 100% !important;
+}
+
+.editor_container :global(.cm-line) {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+}
